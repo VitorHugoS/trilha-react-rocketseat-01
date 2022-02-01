@@ -3,17 +3,19 @@ import { useState, useEffect } from "react";
 
 import '../styles/repositories.scss';
 
-function loadRepoFromExternalUrl(setRepositories) {
-    fetch("https://api.github.com/orgs/rocketseat/repos")
-        .then(response => response.json())
-        .then(data => setRepositories(data))
-}
+interface Repository {
+    name: string;
+    description: string;
+    html_url: string;
+};
 
 export function RepositoryList() {
-    const [repositories, setRepositories] = useState([]);
+    const [repositories, setRepositories] = useState<Repository[]>([]);
 
     function onLoadPage() {
-        loadRepoFromExternalUrl(setRepositories);
+        fetch("https://api.github.com/orgs/rocketseat/repos")
+        .then(response => response.json())
+        .then(data => setRepositories(data))
     }
 
     useEffect(onLoadPage, []);
