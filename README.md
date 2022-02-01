@@ -9,9 +9,10 @@ docker run -it -d -p 8080:8080 xokys/react:v1
 
 Caso esteja sem docker
 
-npm i
-npm run dev
+```bash
+$ npm install
 
-yarn install
-yarn dev
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+```
 
